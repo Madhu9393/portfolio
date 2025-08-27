@@ -2,14 +2,15 @@
   "private": true,
   "name": "masterPortfolio",
   "version": "0.1.0",
-  "homepage": "https://Madhu9392.github.io/masterPortfolio",
+  "homepage": ".",
   "scripts": {
-    "build": "react-scripts --openssl-legacy-provider build",
+    "build": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -b gh-pages -d build",
     "eject": "react-scripts eject",
-    "start": "react-scripts --openssl-legacy-provider start",
-    "test": "react-scripts test"
+    "start": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
+    "test": "react-scripts test",
+    "lint": "eslint src --ext .js,.jsx"
   },
   "dependencies": {
     "aos": "^2.3.4",
