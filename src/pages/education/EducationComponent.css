@@ -1,0 +1,79 @@
+.education-main {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.basic-education {
+  margin: 0 auto;
+  max-width: 90%;
+  padding: 0 5%;
+  box-sizing: border-box;
+}
+
+.heading-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.heading-text-div {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.heading-text {
+  font-size: 2.5rem;
+  font-weight: 500;
+  font-family: "Google Sans Medium";
+  line-height: 1.2;
+  margin: 20px 0 10px;
+  color: var(--text-color);
+}
+
+.heading-sub-text {
+  font-size: 1.25rem;
+  font-family: "Google Sans Regular";
+  margin: 0 0 20px;
+  color: var(--text-color);
+}
+
+/* Competitive sites container */
+.competitive-sites-heading-container {
+  margin: 20px 0;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .heading-text {
+    font-size: 3.5rem;
+    margin-top: 40px;
+  }
+  
+  .heading-sub-text {
+    font-size: 1.5rem;
+  }
+  
+  .basic-education {
+    max-width: 1200px;
+  }
+}
+
+@media (max-width: 767px) {
+  .heading-text {
+    font-size: 2rem;
+    margin-top: 20px;
+  }
+  
+  .heading-sub-text {
+    font-size: 1.1rem;
+    padding: 0 10px;
+  }
+  
+  .basic-education {
+    padding: 0 15px;
+  }
+}
