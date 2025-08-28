@@ -28,7 +28,7 @@ const openSource = {
 const greeting = {
   title: "Perapu Madhu",
   logo_name: "PerapuMadhu",
-  nickname: "madhu_ai",
+  
   subTitle:
     "B.Tech CSE (AI-ML) student with expertise in AI, Machine Learning, and Cybersecurity. Passionate about building intelligent systems and securing digital infrastructure.",
   resumeLink: "/images/doc/PerapuMadhu_CV.pdf", // Path to resume PDF
@@ -193,19 +193,19 @@ const degrees = {
     },
     {
       title: "Sri Chaitanya Junior College",
-      subtitle: "Class 12th (CBSE Board)",
+      subtitle: "Class 12th",
       
       alt_name: "Sri Chaitanya Junior College",
       duration: "2020 - 2021",
       descriptions: [
-        "⚡ Stream: Science with Computer Science",
+        "⚡ Stream: MPC",
         "⚡ Scored 93% in Class 12th Board Examinations",
       ],
       
     },
     {
       title: "Narayana English Medium School",
-      subtitle: "Class 10th (CBSE Board)",
+      subtitle: "Class 10th",
        // Using existing image
       alt_name: "Narayana English Medium School",
       duration: "2018 - 2019",

@@ -1,39 +1,159 @@
 /* Base styles */
+:root {
+  --header-height: 70px;
+  --mobile-menu-bg: #ffffff;
+  --menu-link-hover: #007bff;
+  --menu-transition: all 0.3s ease-in-out;
+  --container-padding: 20px;
+  --section-spacing: 4rem;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base HTML and Body Styles */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #333;
+  background-color: #fff;
+  text-rendering: optimizeLegibility;
+}
+
 .App {
   text-align: center;
+  padding-top: var(--header-height);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
   overflow-x: hidden;
+  position: relative;
+  margin: 0 auto;
 }
 
-/* Responsive typography */
-html {
-  font-size: 16px;
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.3;
+  margin-top: 0;
+  margin-bottom: 0.75em;
+  font-weight: 600;
 }
 
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+p, li, td, th, input, textarea, select, button, label {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Mobile Typography */
 @media (max-width: 768px) {
-  html {
-    font-size: 14px;
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.5rem; }
+  h4 { font-size: 1.25rem; }
+  h5 { font-size: 1.1rem; }
+  
+  .container {
+    padding: 0 1rem;
+  }
+  
+  section {
+    padding: 2rem 0;
   }
 }
 
-@media (max-width: 480px) {
-  html {
-    font-size: 13px;
-  }
-}
-
-/* Container styles */
+/* Container and Section Styles */
 .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 20px;
   box-sizing: border-box;
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ensure all sections don't cause horizontal scroll */
+section {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 2rem 0;
+}
+
+/* Fix for images and other media */
+img, svg, video, iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+section {
+  padding: var(--section-spacing) 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section > .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Responsive images */
 img {
   max-width: 100%;
   height: auto;
+  display: block;
 }
 
 /* Utility classes */
@@ -41,22 +161,122 @@ img {
   color: black;
   margin: 1.5rem 0;
   font-size: 2.5rem;
+  line-height: 1.2;
 }
 
 .subTitle {
   color: #868e96;
   font-size: 1.2rem;
   margin-bottom: 2rem;
+  line-height: 1.5;
 }
 
-/* Responsive text */
-@media (max-width: 768px) {
+/* Responsive Breakpoints */
+/* Large desktops (1200px and up) */
+@media (min-width: 1200px) {
+  :root {
+    --container-padding: 40px;
+    --section-spacing: 5rem;
+  }
+}
+
+/* Tablets and small desktops (992px - 1199px) */
+@media (max-width: 1199px) and (min-width: 992px) {
+  :root {
+    --container-padding: 30px;
+    --section-spacing: 4.5rem;
+  }
+  
+  .container {
+    max-width: 960px;
+  }
+}
+
+/* Tablets (768px - 991px) */
+@media (max-width: 991px) and (min-width: 768px) {
+  :root {
+    --container-padding: 25px;
+    --section-spacing: 4rem;
+  }
+  
+  .container {
+    max-width: 100%;
+  }
+  
+  html {
+    font-size: 15px;
+  }
+}
+
+/* Small tablets and large phones (576px - 767px) */
+@media (max-width: 767px) and (min-width: 576px) {
+  :root {
+    --container-padding: 20px;
+    --section-spacing: 3.5rem;
+  }
+  
+  html {
+    font-size: 15px;
+  }
+  
   .heading {
-    font-size: 2rem;
+    font-size: 2.2rem !important;
   }
   
   .subTitle {
-    font-size: 1rem;
+    font-size: 1.1rem !important;
+  }
+}
+
+/* Small devices (up to 575px) */
+@media (max-width: 575px) {
+  :root {
+    --container-padding: 15px;
+    --section-spacing: 3rem;
+    --header-height: 60px;
+  }
+  
+  .App {
+    padding-top: var(--header-height);
+  }
+  
+  html {
+    font-size: 14px;
+  }
+  
+  .heading {
+    font-size: 1.8rem !important;
+    margin: 0.8rem 0 !important;
+  }
+  
+  .subTitle {
+    font-size: 1rem !important;
+    margin-bottom: 1.2rem !important;
+    padding: 0 10px;
+  }
+  
+  section {
+    padding: 2rem 0;
+  }
+}
+
+/* Extra small devices (up to 360px) */
+@media (max-width: 360px) {
+  :root {
+    --container-padding: 12px;
+    --section-spacing: 2.5rem;
+  }
+  
+  html {
+    font-size: 13px;
+  }
+  
+  .heading {
+    font-size: 1.6rem !important;
+  }
+  
+  .subTitle {
+    font-size: 0.95rem !important;
   }
 }
 

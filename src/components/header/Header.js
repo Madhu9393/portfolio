@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Header.css";
 import { Fade } from "react-reveal";
-import { NavLink, Link, withRouter } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { greeting, settings } from "../../portfolio.js";
 import SeoHeader from "../seoHeader/SeoHeader";
 
@@ -16,108 +16,157 @@ const onMouseOut = (event) => {
 };
 
 class Header extends Component {
-  componentDidUpdate(prevProps) {
-    // Close mobile menu when route changes
-    if (this.props.location && prevProps.location && 
-        this.props.location.pathname !== prevProps.location.pathname) {
-      const menuToggle = document.getElementById('menu-btn');
-      if (menuToggle && menuToggle.checked) {
-        menuToggle.checked = false;
-      }
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      isMobileMenuOpen: false
+    };
   }
+
+  componentDidMount() {
+    // Close menu when clicking outside
+    document.addEventListener('mousedown', this.handleClickOutside);
+    // Handle window resize
+    window.addEventListener('resize', this.handleResize);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside);
+    window.removeEventListener('resize', this.handleResize);
+  }
+
+  handleResize = () => {
+    if (window.innerWidth > 768) {
+      this.setState({ isMobileMenuOpen: false });
+    }
+  };
+
+  toggleMobileMenu = () => {
+    this.setState(prevState => ({
+      isMobileMenuOpen: !prevState.isMobileMenuOpen
+    }));
+  };
+
+  closeMobileMenu = () => {
+    if (window.innerWidth <= 768) {
+      this.setState({ isMobileMenuOpen: false });
+    }
+  };
+
+  handleClickOutside = (event) => {
+    const menu = document.querySelector('.menu');
+    const menuToggle = document.querySelector('.menu-toggle');
+    
+    if (menu && menuToggle && !menu.contains(event.target) && !menuToggle.contains(event.target)) {
+      this.closeMobileMenu();
+    }
+  };
 
   render() {
     const theme = this.props.theme;
     const link = settings.isSplash ? "/splash" : "home";
+    const { isMobileMenuOpen } = this.state;
+    
+    const closeMobileMenu = this.closeMobileMenu;
+    const toggleMobileMenu = this.toggleMobileMenu;
+
     return (
-      <Fade top duration={1000} distance="20px">
+      <>
         <SeoHeader />
-        <div className="header-container">
+        <Fade top duration={1000} distance="20px">
           <header className="header">
-            <NavLink to={link} tag={Link} className="logo">
-              <span style={{ color: theme.text }}> &lt;</span>
-              <span className="logo-name" style={{ color: theme.text }}>
-                {greeting.logo_name}
-              </span>
-              <span style={{ color: theme.text }}>/&gt;</span>
-            </NavLink>
-            <input 
-              className="menu-btn" 
-              type="checkbox" 
-              id="menu-btn" 
-              aria-label="Toggle menu"
-            />
-            <label className="menu-icon" htmlFor="menu-btn" aria-label="Menu">
-              <span className="navicon"></span>
-            </label>
-            <ul className="menu" style={{ backgroundColor: theme.body }}>
-              <li>
-                <NavLink
-                  to="/home"
-                  tag={Link}
-                  activeStyle={{ fontWeight: "bold" }}
-                  style={{ color: theme.text }}
-                  onMouseEnter={(event) => onMouseEnter(event, theme.highlight)}
-                  onMouseOut={(event) => onMouseOut(event)}
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/education"
-                  tag={Link}
-                  activeStyle={{ fontWeight: "bold" }}
-                  style={{ color: theme.text }}
-                  onMouseEnter={(event) => onMouseEnter(event, theme.highlight)}
-                  onMouseOut={(event) => onMouseOut(event)}
-                >
-                  Education
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/experience"
-                  tag={Link}
-                  activeStyle={{ fontWeight: "bold" }}
-                  style={{ color: theme.text }}
-                  onMouseEnter={(event) => onMouseEnter(event, theme.highlight)}
-                  onMouseOut={(event) => onMouseOut(event)}
-                >
-                  Experience
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/projects"
-                  tag={Link}
-                  activeStyle={{ fontWeight: "bold" }}
-                  style={{ color: theme.text }}
-                  onMouseEnter={(event) => onMouseEnter(event, theme.highlight)}
-                  onMouseOut={(event) => onMouseOut(event)}
-                >
-                  Projects
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/contact"
-                  tag={Link}
-                  activeStyle={{ fontWeight: "bold" }}
-                  style={{ color: theme.text }}
-                  onMouseEnter={(event) => onMouseEnter(event, theme.highlight)}
-                  onMouseOut={(event) => onMouseOut(event)}
-                >
-                  Contact Me
-                </NavLink>
-              </li>
-            </ul>
+            <div className="header-container">
+              <NavLink to={link} className="logo">
+                <span className="logo-name" style={{ color: theme.text }}>
+                  {greeting.logo_name}
+                </span>
+              </NavLink>
+              
+              <button 
+                className={`menu-toggle ${isMobileMenuOpen ? 'open' : ''}`} 
+                onClick={toggleMobileMenu}
+                aria-label="Toggle menu"
+                aria-expanded={isMobileMenuOpen}
+              >
+                <span className="navicon"></span>
+              </button>
+              <ul 
+                className={`menu ${isMobileMenuOpen ? 'open' : ''}`} 
+                style={{ backgroundColor: theme.body }}
+                aria-hidden={!isMobileMenuOpen}
+                role="menu"
+              >
+                <li role="none">
+                  <NavLink
+                    to="/home"
+                    className={({ isActive }) => isActive ? 'active' : ''}
+                    style={{ color: theme.text }}
+                    onClick={closeMobileMenu}
+                    onMouseEnter={(event) => onMouseEnter(event, theme.highlight)}
+                    onMouseOut={onMouseOut}
+                    role="menuitem"
+                  >
+                    Home
+                  </NavLink>
+                </li>
+                <li role="none">
+                  <NavLink
+                    to="/education"
+                    className={({ isActive }) => isActive ? 'active' : ''}
+                    style={{ color: theme.text }}
+                    onClick={closeMobileMenu}
+                    onMouseEnter={(event) => onMouseEnter(event, theme.highlight)}
+                    onMouseOut={onMouseOut}
+                    role="menuitem"
+                  >
+                    Education
+                  </NavLink>
+                </li>
+                <li role="none">
+                  <NavLink
+                    to="/experience"
+                    className={({ isActive }) => isActive ? 'active' : ''}
+                    style={{ color: theme.text }}
+                    onClick={closeMobileMenu}
+                    onMouseEnter={(event) => onMouseEnter(event, theme.highlight)}
+                    onMouseOut={onMouseOut}
+                    role="menuitem"
+                  >
+                    Experience
+                  </NavLink>
+                </li>
+                <li role="none">
+                  <NavLink
+                    to="/projects"
+                    className={({ isActive }) => isActive ? 'active' : ''}
+                    style={{ color: theme.text }}
+                    onClick={closeMobileMenu}
+                    onMouseEnter={(event) => onMouseEnter(event, theme.highlight)}
+                    onMouseOut={onMouseOut}
+                    role="menuitem"
+                  >
+                    Projects
+                  </NavLink>
+                </li>
+                <li role="none">
+                  <NavLink
+                    to="/contact"
+                    className={({ isActive }) => isActive ? 'active' : ''}
+                    style={{ color: theme.text }}
+                    onClick={closeMobileMenu}
+                    onMouseEnter={(event) => onMouseEnter(event, theme.highlight)}
+                    onMouseOut={onMouseOut}
+                    role="menuitem"
+                  >
+                    Contact Me
+                  </NavLink>
+                </li>
+              </ul>
+            </div>
           </header>
-        </div>
-      </Fade>
+        </Fade>
+      </>
     );
   }
 }
-// Wrap the component with withRouter to get access to location prop
-export default withRouter(Header);
+export default Header;

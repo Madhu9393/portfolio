@@ -46,27 +46,76 @@ const Projects = () => {
           <div 
             key={project.id} 
             className={`project-card ${isVisible ? 'fade-in-up' : ''}`}
-            style={{ animationDelay: `${0.1 * index}s` }}
+            style={{ 
+              animationDelay: `${0.1 * index}s`,
+              transitionDelay: `${0.1 * index + 0.2}s`
+            }}
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+            data-aos-duration="600"
           >
-            <h3>{project.title}</h3>
-            <p className="project-description">{project.description}</p>
-            <div className="project-details">
-              <h4>Key Features:</h4>
-              <ul>
-                {project.details.map((detail, i) => (
-                  <li key={i}>{detail}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="project-technologies">
-              {project.technologies.map((tech, techIndex) => (
-                <span 
-                  key={techIndex} 
-                  className="tech-tag"
-                >
-                  {tech}
-                </span>
-              ))}
+            <div className="project-content">
+              <div className="project-header">
+                <h3>{project.title}</h3>
+                {project.subtitle && (
+                  <p className="project-subtitle">{project.subtitle}</p>
+                )}
+              </div>
+              
+              <p className="project-description">{project.description}</p>
+              
+              {project.details && project.details.length > 0 && (
+                <div className="project-details">
+                  <h4>Key Features</h4>
+                  <ul>
+                    {project.details.map((detail, i) => (
+                      <li key={i}>
+                        <span className="feature-icon">→</span>
+                        <span>{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              
+              {project.technologies && project.technologies.length > 0 && (
+                <div className="project-technologies">
+                  {project.technologies.map((tech, techIndex) => (
+                    <span 
+                      key={techIndex} 
+                      className="tech-tag"
+                      data-tech={tech.toLowerCase()}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
+              
+              {project.links && (
+                <div className="project-links">
+                  {project.links.demo && (
+                    <a 
+                      href={project.links.demo} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="project-link demo"
+                    >
+                      Live Demo
+                    </a>
+                  )}
+                  {project.links.github && (
+                    <a 
+                      href={project.links.github} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="project-link github"
+                    >
+                      View Code
+                    </a>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         ))}

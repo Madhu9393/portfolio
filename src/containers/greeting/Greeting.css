@@ -5,10 +5,13 @@
   margin-top: 4rem;
 }
 .greet-main {
-  width: 90%;
-  padding: 20px 10px;
-  margin: 0px auto;
+  width: 100%;
+  max-width: 100%;
+  padding: 20px 5%;
+  margin: 0 auto;
   margin-top: 2rem;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .gretting-main {
@@ -18,16 +21,33 @@
 }
 
 .greeting-main {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 5%;
+  box-sizing: border-box;
 }
 
 .greeting-main > * {
   flex: 1;
+  min-width: 300px;
   margin-bottom: 30px;
 }
 .button-greeting-div {
   display: flex;
   margin-top: 20px;
+}
+
+.greeting-text-div {
+  flex: 1;
+  min-width: 300px;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
 .greeting-text {
@@ -50,9 +70,20 @@
   font-family: "Google Sans Medium";
 }
 
-.greeting-image-div > * {
+.greeting-image-div {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.greeting-image-div > svg {
   max-width: 100%;
   height: auto;
+  display: block;
 }
 
 /* Media Query */
@@ -63,33 +94,64 @@
   .greeting-text-p {
     font-size: 20px;
   }
+  
+  .greeting-main {
+    padding: 0 5%;
+  }
 }
 @media (max-width: 768px) {
-  .button-greeting-div {
-    justify-content: space-around;
+  .greet-main {
+    padding: 20px 10px;
+    margin-top: 1rem;
   }
-  .greeting-text {
-    font-size: 30px;
-    margin-top: 0px;
-    text-align: center;
-  }
-  .greeting-nickname {
-    font-size: 25px;
-    text-align: center;
-  }
-  .greeting-text-p {
-    font-size: 16px;
-    margin-right: 0px;
-    line-height: normal;
-    text-align: center;
-  }
+  
   .greeting-main {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
   }
-
+  
+  .greeting-text-div {
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .greeting-text {
+    font-size: 2rem;
+    margin-top: 0;
+  }
+  
+  .greeting-nickname {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+  }
+  
+  .greeting-text-p {
+    font-size: 1rem;
+    margin: 1rem 0;
+    line-height: 1.5;
+  }
+  
+  .button-greeting-div {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  
   .portfolio-repo-btn-div {
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  /* Ensure SVG scales properly */
+  .greeting-image-div svg {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
   }
 }

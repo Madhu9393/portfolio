@@ -8,12 +8,12 @@ import { GlobalStyles } from "./global";
 function App() {
   return (
     <ThemeProvider theme={chosenTheme}>
-      <>
+      <div className="App">
         <GlobalStyles />
-        <div>
+        <div className="main-content">
           <Main theme={chosenTheme} />
         </div>
-      </>
+      </div>
     </ThemeProvider>
   );
 }
