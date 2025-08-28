@@ -64,10 +64,11 @@
 }
 
 .greeting-text-p {
-  font-size: 40px;
-  line-height: 40px;
-  margin-right: 40px;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin: 0.8rem 0;
   font-family: "Google Sans Medium";
+  color: #666;
 }
 
 .greeting-image-div {
@@ -92,7 +93,7 @@
     font-size: 50px;
   }
   .greeting-text-p {
-    font-size: 20px;
+    font-size: 1.1rem;
   }
   
   .greeting-main {
@@ -129,9 +130,9 @@
   }
   
   .greeting-text-p {
-    font-size: 1rem;
-    margin: 1rem 0;
-    line-height: 1.5;
+    font-size: 0.95rem;
+    margin: 0.8rem 0;
+    line-height: 1.4;
   }
   
   .button-greeting-div {

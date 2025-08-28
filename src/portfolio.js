@@ -9,7 +9,8 @@ const settings = {
 const seo = {
   title: "Perapu Madhu's Portfolio",
   description:
-    "B.Tech CSE (AI-ML) student passionate about AI, Machine Learning, and Cybersecurity. Skilled in developing intelligent systems and securing digital infrastructure.",
+  `I am Perapu Madhu, a Computer Science Engineering student specializing in Artificial Intelligence, Machine Learning, and Cybersecurity.
+  I am passionate about exploring AI-driven solutions and secure system design with a focus on innovation and real-world applications.`,
   og: {
     title: "Perapu Madhu Portfolio",
     type: "website",
@@ -30,7 +31,8 @@ const greeting = {
   logo_name: "PerapuMadhu",
   
   subTitle:
-    "B.Tech CSE (AI-ML) student with expertise in AI, Machine Learning, and Cybersecurity. Passionate about building intelligent systems and securing digital infrastructure.",
+  ` I'm a software engineer passionate about Artificial Intelligence, Machine Learning, and Cybersecurity.
+  I'm exploring AI-driven solutions and secure system design with a focus on innovation and real-world applications.`,
   resumeLink: "/images/doc/PerapuMadhu_CV.pdf", // Path to resume PDF
   portfolio_repository: "https://github.com/Madhu9393/masterPortfolio",
   githubProfile: "https://github.com/Madhu9393",
@@ -38,18 +40,17 @@ const greeting = {
 
 const socialMediaLinks = [
   {
-    name: "Github",
+    name: "GitHub",
     link: "https://github.com/Madhu9393",
     fontAwesomeIcon: "fa-github",
-    backgroundColor: "#181717"
+    backgroundColor: "#333"
   },
   {
     name: "LinkedIn",
-    link: "https://linkedin.com/in/madhuperapu21cs002402",
+    link: "https://www.linkedin.com/in/perapumadhu/",
     fontAwesomeIcon: "fa-linkedin-in",
     backgroundColor: "#0077B5"
-  },
- 
+  }
 ];
 
 const skills = {
@@ -263,7 +264,7 @@ const experience = {
           company: "Stag Innovations Pvt. Ltd.",
           company_url: "#",
           logo_path: "company-logo.png",
-          duration: "Jan 2024 - Present",
+          duration: "Jan 2025 - Present",
           location: "Hyderabad, India",
         
           description: "Key Projects and Achievements",

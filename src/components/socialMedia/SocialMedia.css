@@ -1,12 +1,46 @@
 .social-media-div {
   font-size: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
 }
 
 .icon-button i {
   color: white;
 }
-.icon-button {
+.icon-button, .resume-button {
   margin-bottom: 10px;
+}
+
+.resume-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #000080; /* Navy blue */
+  color: white;
+  border: 1px solid #000080; /* Navy blue */
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: 'Google Sans Regular';
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  margin: 0 5px;
+  letter-spacing: 1px;
+}
+
+.resume-button:hover {
+  background-color: #0000a0; /* Slightly lighter navy blue on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.resume-button span {
+  white-space: nowrap;
 }
 
 .icon-button i {

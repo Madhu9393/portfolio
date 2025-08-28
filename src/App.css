@@ -166,9 +166,9 @@ img {
 
 .subTitle {
   color: #868e96;
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
+  font-size: 1.25rem;
   line-height: 1.5;
+  margin: 1rem 0;
 }
 
 /* Responsive Breakpoints */
@@ -251,8 +251,8 @@ img {
   
   .subTitle {
     font-size: 1rem !important;
-    margin-bottom: 1.2rem !important;
-    padding: 0 10px;
+    margin: 0.8rem 0 !important;
+    padding: 0;
   }
   
   section {
@@ -276,7 +276,7 @@ img {
   }
   
   .subTitle {
-    font-size: 0.95rem !important;
+    font-size: 0.9rem !important;
   }
 }
 
