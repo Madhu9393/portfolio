@@ -50,6 +50,12 @@ const socialMediaLinks = [
     link: "https://www.linkedin.com/in/perapumadhu/",
     fontAwesomeIcon: "fa-linkedin-in",
     backgroundColor: "#0077B5"
+  },
+  {
+    name: "Email",
+    link: "mailto:madhuperapu9392@gmail.com",
+    fontAwesomeIcon: "fa-envelope g",
+    backgroundColor: "#D44638"
   }
 ];
 
@@ -416,6 +422,7 @@ const competitiveSites = {
 };
 
 const contactPageData = {
+  email_address: "madhuperapu9392@gmail.com",
   contactSection: {
     title: "Contact Me",
     profile_image_path: "Perapu_Madhu.jpg",
@@ -429,9 +436,9 @@ const contactPageData = {
     country: "India",
     region: "Telangana",
     postalCode: "505001",
-    streetAddress: "",
+    streetAddress: "Yadhadri, Telangana",
     avatar_image_path: "address_image.svg",
-    location_map_link: "#",
+    location_map_link: "https://www.google.com/maps/place/Yadadri+Bhuvanagiri,+Telangana/",
   },
   phoneSection: {
     title: "Phone",

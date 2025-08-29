@@ -2,12 +2,20 @@ import React from "react";
 import "./SocialMedia.css";
 import { socialMediaLinks, greeting } from "../../portfolio";
 import styled from "styled-components";
+import { Mail } from "lucide-react";
 
 const IconWrapper = styled.span`
-  i {
+  i, svg {
     background-color: ${(props) => props.backgroundColor};
+    color: white !important;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.6rem;
+    width: 2.6rem;
   }
-  &:hover i {
+  &:hover i, &:hover svg {
     background-color: ${({ theme }) => theme.text};
     transition: 0.3s ease-in;
   }
@@ -47,7 +55,11 @@ export default function socialMedia(props) {
             rel="noopener noreferrer"
           >
             <IconWrapper {...media} {...props}>
-              <i className={`fab ${media.fontAwesomeIcon}`}></i>
+              {media.name === "Email" ? (
+                <Mail size={24} color="white" />
+              ) : (
+                <i className={`fab ${media.fontAwesomeIcon}`}></i>
+              )}
             </IconWrapper>
           </a>
         );
